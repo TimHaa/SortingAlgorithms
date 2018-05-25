@@ -196,6 +196,54 @@ namespace SortingApp
             Console.WriteLine();
         }
 
+        public List<int> MergeSortRec()
+        {
+            int m = Count / 2;
+            int secondHalf = m;
+            if (Count % 2 != 0) { secondHalf++; }
+            Elements = MergeRec(MergeSortRec(Elements.GetRange(0, m)), MergeSortRec(Elements.GetRange(m, secondHalf)));
+            return Elements;
+        }
+
+        public List<int> MergeSortRec(List<int> lst)
+        {
+            if (lst.Count < 2)
+            {
+                return lst;
+            }
+            else
+            {
+                int m = lst.Count / 2;
+                int secondHalf = m;
+                if(lst.Count % 2 != 0) { secondHalf++; }
+                return MergeRec(MergeSortRec(lst.GetRange(0, m)), MergeSortRec(lst.GetRange(m, secondHalf)));
+            }
+        }
+
+        private List<int> MergeRec(List<int> low, List<int> high)
+        {
+            List<int> retLst = new List<int>();
+            int j = 0;
+            int i = 0;
+            while (i < low.Count && j < high.Count)
+            {
+                if(low[i]> high[j])
+                {
+                    retLst.Add(high[j]);
+                    j++;
+                }
+                else
+                {
+                    retLst.Add(low[i]);
+                    i++;
+                }
+            }
+            if(j < high.Count) { retLst.AddRange(high.GetRange(j, high.Count - j)); }
+            else if (i < low.Count) { retLst.AddRange(low.GetRange(i, low.Count - i)); }
+            return retLst;
+        }
+
+
         public List<int> ShellSort()
         {
             List<int> magic = new List<int>{1391376, 463792, 198768, 86961, 33936, 13776, 4592, 1968, 861, 336, 112, 48, 21, 7, 3, 1};

@@ -29,7 +29,7 @@ namespace SortingApp
             l.Print();*/
             l.Next(20, 0, 20);
             l.Print();
-            l.ShellSort();
+            l.MergeSortRec();
             l.Print();
             Console.ReadLine();
         }
