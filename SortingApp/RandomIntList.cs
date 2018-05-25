@@ -195,5 +195,26 @@ namespace SortingApp
             }
             Console.WriteLine();
         }
+
+        public List<int> ShellSort()
+        {
+            List<int> magic = new List<int>{1391376, 463792, 198768, 86961, 33936, 13776, 4592, 1968, 861, 336, 112, 48, 21, 7, 3, 1};
+            for (int i = 0; i < magic.Count; i++)
+            {
+                int part = magic[i];
+                for (int j = part; j < Count; j++)
+                {
+                    int temp = Elements[j];
+                    while (j >= part && Elements[j] < Elements[j - part])
+                    {
+                        Elements[j] = Elements[j - part];
+                        Elements[j - part] = temp;
+                        j -= part;
+                    }
+                }
+            }
+
+            return Elements;
+        }
     }
 }

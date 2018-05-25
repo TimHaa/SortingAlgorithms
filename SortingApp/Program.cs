@@ -21,11 +21,15 @@ namespace SortingApp
             l.Next(20, 0, 20);
             l.Print();
             l.QuickSort();
-            l.Print();*/
+            l.Print();
             Console.WriteLine("MergeSort");
             l.Next(20, 0, 20);
             l.Print();
             l.MergeSort();
+            l.Print();*/
+            l.Next(20, 0, 20);
+            l.Print();
+            l.ShellSort();
             l.Print();
             Console.ReadLine();
         }
